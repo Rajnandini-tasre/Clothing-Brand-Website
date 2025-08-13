@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f0f4f7, #e6f0ea);
+            color: #333;
+        }
+
+        h2 {
+            color: #b38b6d; /* brown heading */
+            margin-bottom: 25px;
+            font-size: 28px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .add-button {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #d4c19c, #b38b6d); /* beige to brown */
+            color: white;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(179, 139, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .add-button:hover {
+            background: linear-gradient(135deg, #b38b6d, #d4c19c);
+            box-shadow: 0 6px 18px rgba(179, 139, 109, 0.5);
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        th, td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #b38b6d; /* brown header */
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f9f4ef; /* light beige hover */
+        }
+
+        img {
+            max-width: 80px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        td a {
+            color: #b38b6d; /* brown links */
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        td a:hover {
+            color: #d4c19c; /* beige hover */
+            text-decoration: underline;
+        }
+
+        td:last-child {
+            white-space: nowrap;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h2>Product List</h2>
+    <a href="/addproduct" class="add-button">Add New Product</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.stock}"></td>
+            <td><img th:src="@{${product.imageUrl}}" alt="Product Image"/></td>
+            <td>
+                <a th:href="@{'/edit/' + ${product.id}}">Edit</a> |
+                <a th:href="@{'/delete/' + ${product.id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

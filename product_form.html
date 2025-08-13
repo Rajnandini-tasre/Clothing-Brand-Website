@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f0f4f7, #e6f0ea);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: #b38b6d; /* brown heading */
+            font-size: 28px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-3px);
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 15px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #b38b6d; /* brown focus */
+            outline: none;
+            box-shadow: 0 0 6px rgba(179, 139, 109, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #d4c19c, #b38b6d); /* beige to brown */
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(179, 139, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #b38b6d, #d4c19c);
+            box-shadow: 0 6px 18px rgba(179, 139, 109, 0.5);
+            transform: translateY(-2px);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            color: #b38b6d; /* brown link */
+            font-size: 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #d4c19c; /* beige hover */
+            text-decoration: underline;
+        }
+
+        img {
+            margin-top: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            max-width: 150px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${product.id == null ? 'Add Product' : 'Edit Product'}"></h1>
+
+<form th:action="@{/addproduct1}" th:object="${product}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required />
+
+    <label>Description:</label>
+    <textarea th:field="*{description}"></textarea>
+
+    <label>Price:</label>
+    <input type="number" th:field="*{price}" step="0.01" required />
+
+    <label>Stock:</label>
+    <input type="number" th:field="*{stock}" />
+
+    <label>Upload Image:</label>
+    <input type="file" name="image" />
+
+    <div th:if="${product.imageUrl != null}">
+        <img th:src="${product.imageUrl}" alt="Product Image" width="150"/>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+
+<a th:href="@{/products}">Back to List</a>
+
+</body>
+</html>

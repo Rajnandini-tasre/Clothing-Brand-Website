@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shopping | Home</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f0e6; /* light beige */
+            color: #333;
+        }
+
+        header {
+            background: #a67c52; /* dark beige / light brown */
+            color: white;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        nav {
+            background-color: #8c6d4c; /* darker brown for nav */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            flex: 1;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: #7a5c3a;
+            transform: translateY(-2px);
+        }
+
+        main {
+            height: 100vh; /* full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #f5f0e6; /* beige background */
+            padding: 0 20px;
+        }
+
+        main h2 {
+            font-size: 36px;
+            color: #8c6d4c; /* dark beige heading */
+            margin-bottom: 12px;
+        }
+
+        main p {
+            font-size: 18px;
+            color: #5a4532; /* dark brown text */
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        main img {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        main img:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            background-color: #d9c6ad; /* lighter brown */
+            padding: 18px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            font-size: 14px;
+            color: #5a4532;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                margin-bottom: 5px;
+            }
+
+            main h2 {
+                font-size: 28px;
+            }
+
+            main p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Shopping Brand</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/products}">Products</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Welcome to Our Online Store!</h2>
+        <p>Discover amazing products and deals. Register or log in to start shopping!</p>
+        <img src="/wallpaper4.jpg" alt="Shopping Banner">
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Online Shopping App. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f4f7, #e6f0ea);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #d4c19c, #b38b6d); /* beige to brown */
+            color: white;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+            color: #fff8e1; /* light beige */
+        }
+
+        nav {
+            background-color: #b38b6d; /* brown */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            flex: 1;
+        }
+
+        nav a {
+            display: block;
+            color: #fff8e1; /* beige text */
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: #d4c19c; /* lighter beige hover */
+            color: #5b3e2b; /* dark brown text */
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 180px);
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-3px);
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #b38b6d; /* brown heading */
+            font-weight: 600;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #b38b6d; /* brown focus */
+            outline: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #d4c19c, #b38b6d);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #b38b6d, #d4c19c);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #f8f8f8;
+            padding: 18px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MyApp</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+        <li><a th:href="@{/register}">Register</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form th:action="@{/register1}" method="post" th:object="${user}">
+            <label for="username">Username</label>
+            <input type="text" id="username" th:field="*{username}" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" th:field="*{email}" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" th:field="*{password}" required>
+
+            <label for="role">Role</label>
+            <select id="role" th:field="*{role}">
+                <option value="USER" selected>USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+
+            <label>
+                <input type="checkbox" th:field="*{enabled}" checked> Enable Account
+            </label>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Shopping. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

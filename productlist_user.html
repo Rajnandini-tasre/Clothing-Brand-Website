@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .product img {
+            max-width: 100%;
+        }
+
+        .product p {
+            margin: 8px 0;
+        }
+
+        .add-to-cart {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-to-cart:hover {
+            background-color: #45a049;
+        }
+
+        .back-home {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .back-home a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Available Products</h2>
+
+<div class="product-grid">
+    <div class="product" th:each="product : ${products}">
+        <h3 th:text="${product.name}"></h3>
+        <img th:src="${product.imageUrl}" alt="Product Image">
+        <p th:text="${product.description}"></p>
+        <p><strong>Price:</strong> ₹<span th:text="${product.price}"></span></p>
+        <a th:href="@{'/api/cart/addToCart/' + ${product.id} + '?userId=' + ${user.id}}" class="add-to-cart">
+            Add to Cart
+        </a>
+    </div>
+</div>
+
+<div class="back-home">
+    <a th:href="@{/userhome}">← Back to Home</a>
+</div>
+
+</body>
+</html>
