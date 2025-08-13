@@ -6,8 +6,8 @@
 ## Table of Contents
 
 - [Features](#features)
-- [Technologies used](#tech-stack)
-- [Installation](#installation)
+- [Technologies used](#-technologies-used)
+- [Installation](#-setup-instructions)
 
 
 ## 📌 Features
