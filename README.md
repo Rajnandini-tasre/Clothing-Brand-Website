@@ -10,7 +10,7 @@
 - [Installation](#setup-instructions)
 
 
-## 📌 Features
+## Features
 
 - Browse Clothing by category
 - View detailed product information with images
@@ -20,7 +20,7 @@
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Frontend:** HTML5, CSS3, Thymeleaf
 - **Backend:** Spring Boot
@@ -38,7 +38,7 @@
   - MySQL Connector
     
 ---
-## 🔧 Setup Instructions
+## Setup Instructions
 
 1. **Clone the repository:**
    ```bash
