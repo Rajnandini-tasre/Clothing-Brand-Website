@@ -12,7 +12,7 @@
 
 ## 📌 Features
 
-- Browse jewellery by category
+- Browse Clothing by category
 - View detailed product information with images
 - Add, update, and remove products from the cart
 - Secure backend handling for data management
@@ -59,6 +59,6 @@
    
  --- 
  
-Demo is shown in the files as CrudApplication.7z
+Demo is shown in the files 
 
 
